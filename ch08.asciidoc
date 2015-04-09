@@ -10,7 +10,7 @@ Miners validate new transactions and record them on the global ledger. A new blo
 
 Miners receive two types of rewards for mining: new coins created with each new block, and transaction fees from all the transactions included in the block. To earn this reward, the miners compete to solve a difficult mathematical problem based on a cryptographic hash algorithm. The solution to the problem, called the proof of work, is included in the new block and acts as proof that the miner expended significant computing effort. The competition to solve the proof-of-work algorithm to earn reward and the right to record transactions on the blockchain is the basis for bitcoin's security model. 
 
-((("new coin generation")))The process of new coin generation is called mining because the reward is designed to simulate diminishing returns, just like mining for precious metals. Bitcoin's money supply is created through mining, similar to how a central bank issues new money by printing bank notes. ((("bitcoin","rate of issuance")))The amount of newly created bitcoin a miner can add to a block decreases approximately every four years (or precisely every 210,000 blocks). It started at 50 bitcoin per block in January of 2009 and halved to 25 bitcoin per block in November of 2012. It will halve again to 12.5 bitcoin per block sometime in 2016. Based on this formula, bitcoin mining rewards decrease exponentially until approximately the year 2140, when all bitcoin (20.99999998 million) will have been issued. After 2140, no new bitcoins will be issued.
+((("new coin generation")))The process of new coin generation is called mining because the reward is designed to simulate diminishing returns, just like mining for precious metals. Bitcoin's money supply is created through mining, similar to how a central bank issues new money by printing bank notes. 
 
 ((("fees, transaction")))((("transactions","fees")))Bitcoin miners also earn fees from transactions. Every transaction may include a transaction fee, in the form of a surplus of bitcoin between the transaction's inputs and outputs. The winning bitcoin miner gets to "keep the change" on the transactions included in the winning block. Today, the fees represent 0.5% or less of a bitcoin miner's income, the vast majority coming from the newly minted bitcoins. However, as the reward decreases over time and the number of transactions per block increases, a greater proportion of bitcoin mining earnings will come from fees. After 2140, all bitcoin miner earnings will be in the form of transaction fees.
 
@@ -22,41 +22,8 @@ In this chapter, we will first examine mining as a monetary supply mechanism and
 
 ==== Bitcoin Economics and Currency Creation
 
-((("currency creation", id="ix_ch08-asciidoc2", range="startofrange")))((("mining","currency creation", id="ix_ch08-asciidoc3", range="startofrange")))Bitcoins are "minted" during the creation of each block at a fixed and diminishing rate. Each block, generated on average every 10 minutes, contains entirely new bitcoins, created from nothing. Every 210,000 blocks, or approximately every four years, the currency issuance rate is decreased by 50%. For the first four years of operation of the network, each block contained 50 new bitcoins. 
+((("currency creation", id="ix_ch08-asciidoc2", range="startofrange")))((("mining","currency creation", id="ix_ch08-asciidoc3", range="startofrange")))
 
-In November 2012, the new bitcoin issuance rate was decreased to 25 bitcoins per block and it will decrease again to 12.5 bitcoins at block 420,000, which will be mined sometime in 2016. The rate of new coins decreases like this exponentially over 64 "halvings" until block 13,230,000 (mined approximately in year 2137), when it reaches the minimum currency unit of 1 satoshi. Finally, after 13.44 million blocks, in approximately 2140, almost 2,099,999,997,690,000 satoshis, or almost 21 million bitcoins, will be issued. Thereafter, blocks will contain no new bitcoins, and miners will be rewarded solely through the transaction fees. <<bitcoin_money_supply>> shows the total bitcoin in circulation over time, as the issuance of currency decreases.
-
-[[bitcoin_money_supply]]
-.Supply of bitcoin currency over time based on a geometrically decreasing issuance rate
-image::images/msbt_0801.png["BitcoinMoneySupply"]
-
-[NOTE]
-====
-The maximum number of coins mined is the _upper limit_ of possible mining rewards for bitcoin. In practice, a miner may intentionally mine a block taking less than the full reward. Such blocks have already been mined and more may be mined in the future, resulting in a lower total issuance of the currency.
-====
-
-In the example code in <<max_money>>, we calculate the total amount of bitcoin that will be issued.
-
-[[max_money]]
-.A script for calculating how much total bitcoin will be issued
-====
-[source, python]
-----
-include::code/max_money.py[]
-----
-====
-
-<<max_money_run>> shows the output produced by running this script.
-
-[[max_money_run]]
-.Running the max_money.py script
-====
-[source,bash]
-----
-$ python max_money.py 
-Total BTC to ever be created: 2099999997690000 Satoshis
-----
-====
 
 ((("inflation, resisting")))The finite and diminishing issuance creates a fixed monetary supply that resists inflation. Unlike a fiat currency, which can be printed in infinite numbers by a central bank, bitcoin can never be inflated by printing.
 
